@@ -1,19 +1,10 @@
 "use client";
 import { useState } from "react";
-const users = [
-  {
-    id: 1,
-    name: "Amar",
-  },
-  {
-    id: 2,
-    name: "Akbar",
-  },
-  {
-    id: 3,
-    name: "Anthony",
-  },
-];
+const users = {
+  1: "Amar",
+  2: "Akbar",
+  3: "Anthony",
+};
 
 const data = [
   {
@@ -83,6 +74,7 @@ const CommentsPage = () => {
     function util(currComments) {
       for (let i = 0; i < currComments.length; i++) {
         if (currComments[i].id === id) {
+          currComments[i].showChildren = true;
           currComments[i].children.push({
             id: 8,
             userId,
@@ -127,6 +119,8 @@ const CommentsPage = () => {
       currComments.forEach(({ id, userId, text, children, showChildren }) => {
         commentsHtml.push(
           <div>
+            <p className="text-xs">{users[userId]}</p>
+
             <div
               className="flex gap-8"
               style={{
@@ -171,7 +165,7 @@ const CommentsPage = () => {
                 />
                 <button
                   onClick={() => {
-                    addComment(id, 3, currentCommentText);
+                    addComment(id, selectedUserId, currentCommentText);
                     setCurrentCommentText("");
                     setCurrentCommentId(0);
                   }}
@@ -193,13 +187,13 @@ const CommentsPage = () => {
     <div>
       <div>
         <div className="flex justify-end gap-4 mr-4">
-          {users.map(({ id, name }) => (
+          {Object.keys(users).map((id) => (
             <button
               key={id}
-              className={selectedUserId === id ? "bg-blue-200" : ""}
-              onClick={() => setSelectedUserId(id)}
+              className={selectedUserId === Number(id) ? "bg-blue-200" : ""}
+              onClick={() => setSelectedUserId(Number(id))}
             >
-              {name}
+              {users[id]}
             </button>
           ))}
         </div>
@@ -219,9 +213,6 @@ const CommentsPage = () => {
           </p>
         </div>
         <div>{renderComments()}</div>
-        <button onClick={() => addComment(6, 3, "Dynamically added comment")}>
-          Add Comment
-        </button>
       </div>
     </div>
   );
