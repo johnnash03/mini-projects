@@ -26,7 +26,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "app/comments/page.jsx"
+    "app/comments/page.jsx",
+    "app/tictactoe/page.jsx"
   ],
   "exclude": ["node_modules"]
 }

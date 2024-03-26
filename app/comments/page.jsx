@@ -119,10 +119,8 @@ const CommentsPage = () => {
       currComments.forEach(({ id, userId, text, children, showChildren }) => {
         commentsHtml.push(
           <div>
-            <p className="text-xs">{users[userId]}</p>
-
             <div
-              className="flex gap-8"
+              className="flex gap-8 items-center"
               style={{
                 marginLeft: `${level * 100}px`,
               }}
@@ -145,6 +143,7 @@ const CommentsPage = () => {
                     +
                   </button>
                 ))}
+              <span className="text-xs">{users[userId]}</span>
               {text}
               <button
                 onClick={() => {
