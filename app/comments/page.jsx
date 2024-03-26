@@ -155,7 +155,7 @@ const CommentsPage = () => {
               </button>
             </div>
 
-            {currentCommentId === id ? (
+            {!!(currentCommentId === id) && (
               <div>
                 <input
                   onChange={(e) => setCurrentCommentText(e.target.value)}
@@ -172,7 +172,7 @@ const CommentsPage = () => {
                   Add
                 </button>
               </div>
-            ) : null}
+            )}
           </div>
         );
         if (children.length && showChildren) {
