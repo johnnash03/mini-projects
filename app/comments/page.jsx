@@ -108,7 +108,6 @@ const CommentsPage = () => {
         }
       }
     }
-    console.log("newComments", newComments);
     setComments(newComments);
   };
   const renderComments = () => {
