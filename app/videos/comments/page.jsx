@@ -37,7 +37,7 @@ const Comments = () => {
       html.push(
         <div style={{ marginLeft }}>
           <span>
-            {eachComment.comment} - {eachComment.authorId}
+            {eachComment.comment} - {authors.get(eachComment.authorId)}
           </span>
           <button
             onClick={() => {
